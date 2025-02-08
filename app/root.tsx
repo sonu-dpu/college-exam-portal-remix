@@ -18,6 +18,7 @@ export const links: LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
+
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
@@ -34,12 +35,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <div>
-
-        </div>
+        <div></div>
         <SidebarProvider>
-          <AppSidebar/>
-        {children}
+          <AppSidebar />
+          {children}
         </SidebarProvider>
         <ScrollRestoration />
         <Scripts />

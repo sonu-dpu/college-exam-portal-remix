@@ -3,14 +3,21 @@ import { redirect, useLoaderData } from "@remix-run/react";
 import StudentDetails from "~/components/students/studentsDetails";
 import authService from "~/utils/server/auth.services";
 import dbService from "~/utils/server/db.services";
-
+export type StudentData = {
+  id: string;
+  name: string;
+  email: string;
+  semester: 4;
+  course_id:string;
+  user_id: null;
+};
 function Students() {
-  const studentData = useLoaderData();
+  const studentData = useLoaderData<{data:StudentData[]}>();
   console.log(studentData);
   return (
     <div>
       Students
-      <StudentDetails studentData={""} />
+      <StudentDetails studentData={studentData} />
     </div>
   );
 }
@@ -28,5 +35,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
       status: result.status,
     });
   }
-  return new Response(JSON.stringify({ data: result.data }));
+  const {data} = result;
+   return Response.json({data});
 }
