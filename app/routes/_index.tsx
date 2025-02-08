@@ -2,7 +2,6 @@ import type { MetaFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { Form, redirect, useLoaderData } from "@remix-run/react";
 import { User } from "@supabase/supabase-js";
 import LogoutBtn from "~/components/logoutBtn";
-import { SidebarTrigger } from "~/components/ui/sidebar";
 import authService from "~/utils/server/auth.services";
 
 export const meta: MetaFunction = () => {
@@ -16,7 +15,6 @@ export default function Index() {
   const actionData = useLoaderData<User>();
   return (
     <div className="h-screen">
-      <SidebarTrigger></SidebarTrigger>
       {actionData.email}
       <Form method="post" action="/logout">
         <LogoutBtn></LogoutBtn>

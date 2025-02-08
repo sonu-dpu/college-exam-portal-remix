@@ -21,6 +21,9 @@ const dbService = {
       return { error: error.message, status: 404 };
     }
     return { data, status: 200 };
+  },
+  getDB(request:Request){
+    return getSupabase(request).supabase;
   }
 };
 
